@@ -1,4 +1,4 @@
-
+  
 
 %%%%%%%%%%%%%%%%%%%%
 %% Grid Specifics %%
@@ -28,8 +28,12 @@ on(X,S,U,0):-init ( object (product ,X) , value (on , pair (S ,U))).
 %%%%%%%%%%%%
 order(X,P,I,U):-init ( object (order ,X) , value (pickingStation ,P)), init ( object (order ,X) , value (line , pair (I ,U))).
 
+%%%%%%%%%%%
+%% Carry %%
+%%%%%%%%%%%
+carry(R, S, 1) :- object(robot, R), object(shelf, S), occurs(object(robot,R),pickup,t).
 
-#show object/2.
-#show at/4.
-#show on/4.
-#show order/4.
+%#show object/2.
+%#show at/4.
+%#show on/4.
+%#show order/4.
