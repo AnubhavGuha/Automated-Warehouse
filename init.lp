@@ -80,13 +80,13 @@ product(N):-init ( object ( product ,N) , value (on , pair (S ,U))).
 % U units of Product N on shelf S
 on(N,shelf,S,U,0):-init ( object (product ,N) , value (on , pair (S ,U))).
 
-on(N,pickingStation,P,0,0):- init(object(order,N),value(pickingStation,P)),product(I).
+%on(N,pickingStation,P,0,0):- init(object(order,N),value(pickingStation,P)),init(object(order,N),value(line,pair(4,1)))..
 
 %%%%%%%%%%%%
 %% Orders %%
 %%%%%%%%%%%%
 order(N,P,I,U):-init ( object (order ,N) , value (pickingStation ,P)), init ( object (order ,N) , value (line , pair (I ,U))).
-
+on(I,pickingStation,P,0,0):- order(N,P,I,U).
 
 %%%%%%%%%%%
 %% Goals %%
@@ -108,7 +108,7 @@ order(N,P,I,U):-init ( object (order ,N) , value (pickingStation ,P)), init ( ob
 
 #show object/2.
 #show at/4.
-#show on/5.
 #show order/4.
+#show on/5.
 
 
