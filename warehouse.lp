@@ -56,12 +56,6 @@ at(object(robot, R), P+X, Q+Y, T):- occurs(object(robot, R), move(X, Y), T), at(
 :- at(object(robot, R1), X, Y, T), at(object(robot, R2), P, Q, T), at(object(robot, R1), P, Q, T+1), at(object(robot, R2), X, Y, T+1), X!=P, Y!=Q. 
 
 
-%%%%%%%%%%%
-%% Goals %%
-%%%%%%%%%%%
-:- not on(I,pickingStation,P,S,m),S = #sum{U,N : order(N,P,I,U)},product(I),pickingStation(P,X,Y).
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Commonsense law of inertia%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,7 +1,7 @@
 printf "\n"
 printf "     ***** RUNNING TEST (INST 1) *****\n"
 printf "\n"
-clingo test.lp simpleinstances/inst1.asp -c T=0 -t4
+clingo warehouse.lp simpleinstances/projectgoal.lp simpleinstances/inst1.asp -c T=0 -t4
 
 
 printf "\n"
