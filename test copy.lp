@@ -17,9 +17,8 @@ at(object (N ,Y),X,Y,0):- init ( object (N ,Y) , value (at , pair (X ,Y))), N!=n
 % a robot can only take one action at a time (robot cannot move to two locations or move and pickup shelf at same time)
 occurs(object(robot, R), A1, T), occurs(object(robot, R), A2, T).
 
-% Robot R can pickup shelf S at T+1 if not carrying at T
-{occurs(object(robot,R),pickup,T)} :- at(object(robot, R), X, Y, T), at(object(shelf, S), X, Y, T), not carry(R, S2, T).
-carry(R, S, T+1) :- occurs(object(robot,R),pickup,T).
+% Robot R carrying shelf S
+carry(R, S, T+1) :- object(robot, R), object(shelf, S), occurs(object(robot,R),pickup,T).
 
 %%%%%%%%%%%%%
 %% Product %%
