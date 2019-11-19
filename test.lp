@@ -1,11 +1,11 @@
-
-
 %%%%%%%%%%%%%%%%%%%%
 %% Grid Specifics %%
 %%%%%%%%%%%%%%%%%%%%
 node(X,P,Q):- init ( object (node ,X) , value (at , pair (P ,Q))).
 highway(X,P,Q):- init ( object (highway ,X) , value (at , pair (P ,Q))).
 pickingStation(X,P,Q):- init ( object (pickingStation ,X) , value (at , pair (P ,Q))).
+
+
 
 %%%%%%%%%%%%%%%%%%%%%
 %% Shelf and Robot %%
@@ -18,6 +18,8 @@ at(object (X ,Y),P,Q,0):- init ( object (X ,Y) , value (at , pair (P ,Q))), X!=n
 %%%%%%%%%%%%%
 %% Product %%
 %%%%%%%%%%%%%
+
+
 product(X):-init ( object ( product ,X) , value (on , pair (S ,U))).
 
 % U units of Product X on shelf S
@@ -26,10 +28,21 @@ on(X,S,U,0):-init ( object (product ,X) , value (on , pair (S ,U))).
 %%%%%%%%%%%%
 %% Orders %%
 %%%%%%%%%%%%
+
 order(X,P,I,U):-init ( object (order ,X) , value (pickingStation ,P)), init ( object (order ,X) , value (line , pair (I ,U))).
+
+
+at(object(X,Y),P+dx,Q-dy,t+1):- occurs(object(robot,'r'),move('dx','dy'),t).
+
+
+
+
+
+
 
 
 #show object/2.
 #show at/4.
 #show on/4.
 #show order/4.
+#show occurs/3.
