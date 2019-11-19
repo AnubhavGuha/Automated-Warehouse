@@ -17,6 +17,9 @@ at(object (N ,I),X,Y,0):- init ( object (N ,I) , value (at , pair (X ,Y))), N!=n
 % Robot R carrying shelf S
 carry(R, S, T+1) :- object(robot, R), object(shelf, S), occurs(object(robot,R),pickup,T).
 
+% Object cannot be in two locations at once
+:- at(object (N ,I),X1,Y1,T), at(object (N ,I),X2,Y2,T), X1 != X2.
+:- at(object (N ,I),X1,Y1,T), at(object (N ,I),X2,Y2,T), Y1 != Y2.
 
 %%%%%%%%%%%%%
 %% Product %%
