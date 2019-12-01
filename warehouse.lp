@@ -66,6 +66,32 @@ at(object(robot, R), P+X, Q+Y, T):- occurs(object(robot, R), move(X, Y), T), at(
 % Robot cannot carry two different shelves
 :- carry(R, S1, T), carry(R, S2, T), S1!=S2.
 
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Deliver Definition %%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+on(i,S,U-u,t+1):-occurs(object(robot,r),deliver(o,i,u),t),at(object(shelf,S),P,Q,t).
+
+% update order
+order(o,P,i,U-u):-occurs(object(robot,r),deliver(o,i,u),t).
+%constraints added so items on shelf or order go negative
+:-order(o,P,i,u),u<0.
+:-on(i,S,u,t),u<0,object(shelf,S).
+
+
+
+%disallow deliver if robot is not at pickupstation.
+:-occurs(object(robot,r),deliver(o,i,u),t),at(object(robot, r), P, Q, t),at(object(pickingStation, Q), X, Y, t),P!=X,Q!=Y.
+
+%don't allow deliver wrong order
+:-occurs(object(robot,r),deliver(o,i,u),t), on(x,S,U,t),x!=i.
+
+%don't allow deliver of wrong item.
+:-occurs(object(robot,r),deliver(o,i,u),t), order(o,P,r,u),i!=r,object(pickingStation,P).
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Commonsense law of inertia%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

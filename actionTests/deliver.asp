@@ -10,9 +10,10 @@ init(object(product,1),value(on,pair(2,1))).
 
 
 occurs(object(robot,1),pickup,0).
-occurs(object(robot,1),
+
 occurs(object(robot,1),deliver(1,1,1),1).
 
 
 % goal
+not order(1,1,0,1).
 not at(object (shelf ,2),3,3,1).
