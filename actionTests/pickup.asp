@@ -1,7 +1,6 @@
-object(robot,1).
-object(shelf, 2).
-at(object (robot ,1),3,3,0).
-at(object (shelf ,2),3,3,0).
+init(object(robot,1),value(at,pair(3,3))).
+init(object(shelf,2),value(at,pair(3,3))).
+
 occurs(object(robot,1),pickup,0).
 
 % goal
