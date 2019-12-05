@@ -23,6 +23,7 @@ Every Scenario run needs the following properties:
 Example Runs
 ---
 ### Inst1 Scenario
+Warning: Not functional yet
 ```
 clingo warehouse.lp simpleinstances/inst1.asp output/occurs_result.lp -t4
 ```
