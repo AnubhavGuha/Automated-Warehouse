@@ -56,6 +56,8 @@ at(object(robot, R), P+X, Q+Y, T):- occurs(object(robot, R), move(X, Y), T), at(
 % Two robots cannot switch locations among each other
 :- at(object(robot, R1), X, Y, T), at(object(robot, R2), P, Q, T), at(object(robot, R1), P, Q, T+1), at(object(robot, R2), X, Y, T+1), X!=P, Y!=Q. 
 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%
 %% Pickup definition %%
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -71,26 +73,31 @@ at(object(robot, R), P+X, Q+Y, T):- occurs(object(robot, R), move(X, Y), T), at(
 %% Deliver Definition %%
 %%%%%%%%%%%%%%%%%%%%%%%
 
-on(i,S,U-u,t+1):-occurs(object(robot,r),deliver(o,i,u),t),at(object(shelf,S),P,Q,t),on(i,S,U,t).
+
+on(I,shelf,S,U-Q,T+1):- occurs(object(robot,R),deliver(O,I,Q),T),at(object(shelf,S),P,Q,T),on(I,shelf,S,U,T).
 
 % update order
-order(o,P,i,U-u):-occurs(object(robot,r),deliver(o,i,u),t),order(o,P,i,U).
+order(O,P,I,U-Q):-occurs(object(robot,R),deliver(O,I,Q),T),order(O,P,I,U).
 %constraints added so items on shelf or order go negative
-:-order(o,P,i,u),u<0.
-:-on(i,S,u,t),u<0,object(shelf,S).
+:-order(O,P,I,U),U<0.
+:-on(I,shelf,S,U,T),U<0.
+
 
 
 
 %disallow deliver if robot is not at pickupstation.
-:-occurs(object(robot,r),deliver(o,i,u),t),at(object(robot, r), P, Q, t),at(object(pickingStation, Q), X, Y, t),P!=X,Q!=Y.
+:-occurs(object(robot,R),deliver(O,I,U),T),at(object(robot, R), P, Q, T),pickingStation(Q,X,Y),P!=X,Q!=Y.
+
+%:-occurs(object(robot,R),deliver(O,I,U),T),order(O,P,I,U),pickingStation(Q,X,Y),P!=Q.
+
 
 %don't allow deliver wrong order
-:-occurs(object(robot,r),deliver(o,i,u),t), on(x,S,U,t),x!=i.
+:-occurs(object(robot,R),deliver(O,I,U),T), on(X,shelf,S,U,T),X!=I,carry(R,S,T).
 
 %don't allow deliver of wrong item.
-:-occurs(object(robot,r),deliver(o,i,u),t), order(o,P,r,u),i!=r,object(pickingStation,P).
+:-occurs(object(robot,R),deliver(O,I,U),T), order(O,P,L,U),I!=L,pickingStation(P,X,Y).
 
-
+{occurs(object(robot,R),deliver(O,I,U),T)}:- at(object(robot, R), X, Y, T), pickingStation(P,X,Y), carry(R,S,T),on(I,shelf,S,U,T),order(O,P,I,E),T=0..m-1.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Commonsense law of inertia%%
@@ -103,3 +110,9 @@ order(o,P,i,U-u):-occurs(object(robot,r),deliver(o,i,u),t),order(o,P,i,U).
 %% Uniqueness and Existence of value constraints%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 :-not 1{at(object (N ,I),X,Y,T)}1, object (N ,I), T = 1..m.
+
+
+
+
+
+
