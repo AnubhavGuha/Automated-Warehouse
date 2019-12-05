@@ -5,4 +5,4 @@ init(object(node,3),value(at,pair(3,1))).
 init(object(robot,1),value(at,pair(1,1))).
 
 % goal
-:- at(object(robot, R),3,1,T).
+:- not at(object(robot, R),3,1,m),object(robot,R).

@@ -29,7 +29,7 @@ product(N):-init ( object ( product ,N) , value (on , pair (S ,U))).
 % U units of Product N on shelf S
 on(N,shelf,S,U,0):-init ( object (product ,N) , value (on , pair (S ,U))).
 
-%on(N,pickingStation,P,0,0):- init(object(order,N),value(pickingStation,P)),init(object(order,N),value(line,pair(4,1)))..
+
 
 %%%%%%%%%%%%
 %% Orders %%
@@ -56,7 +56,8 @@ at(object(robot, R), P+X, Q+Y, T):- occurs(object(robot, R), move(X, Y), T), at(
 % Two robots cannot switch locations among each other
 :- at(object(robot, R1), X, Y, T), at(object(robot, R2), P, Q, T), at(object(robot, R1), P, Q, T+1), at(object(robot, R2), X, Y, T+1), X!=P, Y!=Q. 
 
-
+:- at(object(robot,R),X,Y,T),object(node,N),not node(N,X,Y).
+{occurs(object(robot, R), move(X, Y), T)}:- object(robot,R),move(X,Y),T=0..m-1.
 
 %%%%%%%%%%%%%%%%%%%%%%%
 %% Pickup definition %%
