@@ -1,5 +1,5 @@
 # cse579_autowarehouse
-[Final Project Report Link] (https://drive.google.com/file/d/1ePJYVsW2RGq6_JAHh-t9gOMyVIYSZ0KO/view?usp=sharing)
+__[Final Project Report Link](https://drive.google.com/file/d/1ePJYVsW2RGq6_JAHh-t9gOMyVIYSZ0KO/view?usp=sharing)__
 > Team Members: Yi-Chuan Lin, Anubhab Guha, Daniel Pilgrim-Minaya, Kanisk Bashyam
  
 ----
@@ -20,7 +20,7 @@ Every Scenario run needs the following properties:
 | Time Parameter    | Definition for m (max timestep) |
 ---
 
-##Example Runs
+Example Runs
 ---
 ### Inst1 Scenario
 
