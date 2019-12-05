@@ -103,8 +103,3 @@ order(o,P,i,U-u):-occurs(object(robot,r),deliver(o,i,u),t).
 %% Uniqueness and Existence of value constraints%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 :-not 1{at(object (N ,I),X,Y,T)}1, object (N ,I), T = 1..m.
-
-#show object/2.
-#show at/4.
-#show order/4.
-#show on/5.
