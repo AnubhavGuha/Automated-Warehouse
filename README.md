@@ -46,4 +46,9 @@ clingo warehouse.lp actionTests/move_posx.asp output/debug.lp -c m=20 -t4
 | Output    | Uses Debug Display Output in __output/debug.lp__  |
 | Time Parameter    | Allows 20 movements starting at timestep 0 and ending at timestep 20 |
 
+One can also test all actions with 
+```
+./test_all_actions.sh 
+```
+
 
