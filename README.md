@@ -25,7 +25,7 @@ Example Runs
 ### Inst1 Scenario
 
 | Property | Option Used |
-| ------:| -----------:|
+| ------| -----------|
 | Warehouse Definition   | Standard Warehouse, __warehouse.lp__ |
 | Initializations and Goal | Used professor's given scenario in __simpleinstances/inst1.asp__, automatically includes goal clause in __simpleinstances/projectgoal.lp__  |
 | Output    | Only display Occur actions, like in professor's output example __output/projectgoal.lp__  |
@@ -38,7 +38,7 @@ clingo warehouse.lp simpleinstances/inst1.asp output/occurs_result.lp -t4
 ### Test Move Positive X Scenario
 
 | Property | Option Used |
-| ------:| -----------:|
+| ------| -----------|
 | Warehouse Definition   | Standard Warehouse, __warehouse.lp__ |
 | Initializations and Goal | Uses Move Pos X scenario and goal clause in __actionTests/move_posx.asp__  |
 | Output    | Uses Debug Display Output in __output/debug.lp__  |
