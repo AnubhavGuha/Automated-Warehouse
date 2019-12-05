@@ -23,7 +23,9 @@ Every Scenario run needs the following properties:
 Example Runs
 ---
 ### Inst1 Scenario
-
+```
+clingo warehouse.lp simpleinstances/inst1.asp output/occurs_result.lp -t4
+```
 | Property | Option Used |
 | ------| -----------|
 | Warehouse Definition   | Standard Warehouse, __warehouse.lp__ |
@@ -31,12 +33,12 @@ Example Runs
 | Output    | Only display Occur actions, like in professor's output example __output/projectgoal.lp__  |
 | Time Parameter    | Minimalization function, not decided on yet |
 
-```
-clingo warehouse.lp simpleinstances/inst1.asp output/occurs_result.lp -t4
-```
+
 ---
 ### Test Move Positive X Scenario
-
+```
+clingo warehouse.lp actionTests/move_posx.asp output/debug.lp -c m=20 -t4
+```
 | Property | Option Used |
 | ------| -----------|
 | Warehouse Definition   | Standard Warehouse, __warehouse.lp__ |
@@ -44,6 +46,4 @@ clingo warehouse.lp simpleinstances/inst1.asp output/occurs_result.lp -t4
 | Output    | Uses Debug Display Output in __output/debug.lp__  |
 | Time Parameter    | Allows 20 movements starting at timestep 0 and ending at timestep 20 |
 
-```
-clingo warehouse.lp actionTests/move_posx.asp output/debug.lp -c m=20 -t4
-```
+
