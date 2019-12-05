@@ -19,9 +19,9 @@ Every Scenario run needs the following properties:
 | Output    | Display output of satisfiable solutions for scenario |
 | Time Parameter    | Definition for m (max timestep) |
 ---
-
+---
 ##Example Runs
-
+---
 ### Inst1 Scenario
 
 | Property | Option Used |
@@ -34,21 +34,7 @@ Every Scenario run needs the following properties:
 ```
 clingo warehouse.lp simpleinstances/inst1.asp output/occurs_result.lp -t4
 ```
-
-
-### Inst1 Scenario
-
-| Property | Option Used |
-| ------:| -----------:|
-| Warehouse Definition   | Standard Warehouse, __warehouse.lp__ |
-| Initializations and Goal | Used professor's given scenario in __simpleinstances/inst1.asp__, automatically includes goal clause in __simpleinstances/projectgoal.lp__  |
-| Output    | Only display Occur actions, like in professor's output example __output/projectgoal.lp__  |
-| Time Parameter    | Minimalization function, not decided on yet |
-
-```
-clingo warehouse.lp simpleinstances/inst1.asp output/occurs_result.lp -t4
-```
-
+---
 ### Test Move Positive X Scenario
 
 | Property | Option Used |
