@@ -71,10 +71,10 @@ at(object(robot, R), P+X, Q+Y, T):- occurs(object(robot, R), move(X, Y), T), at(
 %% Deliver Definition %%
 %%%%%%%%%%%%%%%%%%%%%%%
 
-on(i,S,U-u,t+1):-occurs(object(robot,r),deliver(o,i,u),t),at(object(shelf,S),P,Q,t).
+on(i,S,U-u,t+1):-occurs(object(robot,r),deliver(o,i,u),t),at(object(shelf,S),P,Q,t),on(i,S,U,t).
 
 % update order
-order(o,P,i,U-u):-occurs(object(robot,r),deliver(o,i,u),t).
+order(o,P,i,U-u):-occurs(object(robot,r),deliver(o,i,u),t),order(o,P,i,U).
 %constraints added so items on shelf or order go negative
 :-order(o,P,i,u),u<0.
 :-on(i,S,u,t),u<0,object(shelf,S).
