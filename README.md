@@ -19,7 +19,6 @@ Every Scenario run needs the following properties:
 | Output    | Display output of satisfiable solutions for scenario |
 | Time Parameter    | Definition for m (max timestep) |
 ---
----
 ##Example Runs
 ---
 ### Inst1 Scenario
