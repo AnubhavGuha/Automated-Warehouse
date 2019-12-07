@@ -1,4 +1,3 @@
-
 %%%%%%%%%%%%%%%%%%%%
 %% Grid Specifics %%
 %%%%%%%%%%%%%%%%%%%%
@@ -69,6 +68,18 @@ at(object(robot, R), P+X, Q+Y, T):- occurs(object(robot, R), move(X, Y), T), at(
 % Robot cannot carry two different shelves
 :- carry(R, S1, T), carry(R, S2, T), S1!=S2.
 
+%%%%%%%%%%%%%%%%%%%%%%%%
+%% Putdown Definition %%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%effect of and preconditions of action putdown
+at(object (shelf ,S),X,Y,T+1):- occurs(object(robot,R),putdown,T),at(object (robot ,R),X,Y,T), carry(R,S,T).
+:- occurs(object(robot,R),putdown,T),carry(R,S,T+1), T = 0..m-1.
+%shelves cannot be putdown on highway
+:-occurs(object(robot,R),putdown,T),at(object (robot ,R),X,Y,T),highway(N,X,Y).
+
+{occurs(object(robot,R),putdown,T)} :- object(robot,R),T = 0..m-1.
 
 %%%%%%%%%%%%%%%%%%%%%%%
 %% Deliver Definition %%
@@ -94,9 +105,3 @@ order(O,P,I,U-U2):-occurs(object(robot,R),deliver(O,I,U2),T),order(O,P,I,U).
 %% Uniqueness and Existence of value constraints%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 :-not 1{at(object (N ,I),X,Y,T)}1, object (N ,I), T = 1..m.
-
-
-
-
-
-
