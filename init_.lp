@@ -95,7 +95,6 @@ at(object(shelf, S), P+X, Q+Y, T):- object(shelf,S),occurs(object(robot, R), mov
 :- at(object(robot, R1), X, Y, T), at(object(robot, R2), X, Y, T), R1!=R2,T=0..m.
 
 % Constraint when carrying shelf
-%:- at(object(robot, R), X, Y, T), object(shelf, S1), carry(R, S1, T), at(object(shelf, S2), X, Y, T), S1!=S2.
 :- at(object(shelf, S1), X, Y, T), at(object(shelf, S2), X, Y, T), S1!=S2,T=0..m.
 
 % Two robots cannot switch locations among each other
@@ -115,8 +114,6 @@ carry(R, S, T) :- occurs(object(robot,R),pickup,T), at(object(robot, R), X, Y, T
 % Robot R can pickup shelf S if R and S are at the same node at T-1
 {occurs(object(robot,R),pickup,T)} :- object(robot,R),at(object(robot, R), X, Y, T-1), at(object(shelf, S), X, Y, T-1),T = 1..m.
 
-% Robot cannot carry two different shelves
-%:- carry(R, S1, T), carry(R, S2, T), S1!=S2.
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 %% Putdown Definition %%
@@ -176,5 +173,5 @@ action(pickup).action(putdown).
 
 #show occurs/3.
 %#show at/4.
-#show order/4.
+%#show order/4.
 %#show carry/3.
