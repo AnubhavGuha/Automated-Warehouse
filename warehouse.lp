@@ -77,11 +77,11 @@ at(object(robot, R), P+X, Q+Y, T):- occurs(object(robot, R), move(X, Y), T), at(
 %matching X and Y coords between robot, matching I (product id) between deliver and order and shelf, matching P (picking station) for order and P, delivered amount is either U (shelf amt) or E (order amt)
 {occurs(object(robot,R),deliver(O,I,E),T); occurs(object(robot,R),deliver(O,I,U),T)} 1 :- at(object(robot,R),X,Y,T), pickingStation(P,X,Y), carry(R,S,T), on(I,shelf,S,U,T), order(O,P,I,E).
 
-% subtracts u (delivery amt) from U (shelf amt), N = shelf num
-on(I,shelf,N,U-u,T+1) :- occurs(object(robot,R),deliver(O,I,u),T), on(I,shelf,N,U,T).
+% subtracts U2 (delivery amt) from U (shelf amt), N = shelf num
+on(I,shelf,N,U-U2,T+1) :- occurs(object(robot,R),deliver(O,I,U2),T), on(I,shelf,N,U,T).
 
-% subtracts u (delivery amt) from U (order amt)
-order(O,P,I,U-u):-occurs(object(robot,R),deliver(O,I,u),T),order(O,P,I,U).
+% subtracts U2 (delivery amt) from U (order amt)
+order(O,P,I,U-U2):-occurs(object(robot,R),deliver(O,I,U2),T),order(O,P,I,U).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Commonsense law of inertia%%
