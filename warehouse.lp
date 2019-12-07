@@ -74,31 +74,14 @@ at(object(robot, R), P+X, Q+Y, T):- occurs(object(robot, R), move(X, Y), T), at(
 %% Deliver Definition %%
 %%%%%%%%%%%%%%%%%%%%%%%
 
+%matching X and Y coords between robot, matching I (product id) between deliver and order and shelf, matching P (picking station) for order and P, delivered amount is either U (shelf amt) or E (order amt)
+{occurs(object(robot,R),deliver(O,I,E),T); occurs(object(robot,R),deliver(O,I,U),T)} 1 :- at(object(robot,R),X,Y,T), pickingStation(P,X,Y), carry(R,S,T), on(I,shelf,S,U,T), order(O,P,I,E).
 
-on(I,shelf,S,U-Q,T+1):- occurs(object(robot,R),deliver(O,I,Q),T),at(object(shelf,S),P,Q,T),on(I,shelf,S,U,T).
+% subtracts u (delivery amt) from U (shelf amt), N = shelf num
+on(I,shelf,N,U-u,T+1) :- occurs(object(robot,R),deliver(O,I,u),T), on(I,shelf,N,U,T).
 
-% update order
-order(O,P,I,U-Q):-occurs(object(robot,R),deliver(O,I,Q),T),order(O,P,I,U).
-%constraints added so items on shelf or order go negative
-:-order(O,P,I,U),U<0.
-:-on(I,shelf,S,U,T),U<0.
-
-
-
-
-%disallow deliver if robot is not at pickupstation.
-:-occurs(object(robot,R),deliver(O,I,U),T),at(object(robot, R), P, Q, T),pickingStation(Q,X,Y),P!=X,Q!=Y.
-
-%:-occurs(object(robot,R),deliver(O,I,U),T),order(O,P,I,U),pickingStation(Q,X,Y),P!=Q.
-
-
-%don't allow deliver wrong order
-:-occurs(object(robot,R),deliver(O,I,U),T), on(X,shelf,S,U,T),X!=I,carry(R,S,T).
-
-%don't allow deliver of wrong item.
-:-occurs(object(robot,R),deliver(O,I,U),T), order(O,P,L,U),I!=L,pickingStation(P,X,Y).
-
-{occurs(object(robot,R),deliver(O,I,U),T)}:- at(object(robot, R), X, Y, T), pickingStation(P,X,Y), carry(R,S,T),on(I,shelf,S,U,T),order(O,P,I,E),T=0..m-1.
+% subtracts u (delivery amt) from U (order amt)
+order(O,P,I,U-u):-occurs(object(robot,R),deliver(O,I,u),T),order(O,P,I,U).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Commonsense law of inertia%%
