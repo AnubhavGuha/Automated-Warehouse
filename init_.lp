@@ -81,31 +81,6 @@ on(N,shelf,S,U,0):-init ( object (product ,N) , value (on , pair (S ,U))).
 orderPS(O,P):-init ( object (order ,O) , value (pickingStation ,P)).
 order(O,I,U,0):-init ( object (order ,O) , value (line , pair (I ,U))).
 
-occurs ( object (robot ,1) , move ( -1 ,0) ,1).
-occurs ( object (robot ,2) , move ( -1 ,0) ,1).
-occurs ( object (robot ,1) , move ( -1 ,0) ,2).
-occurs ( object (robot ,2) , pickup ,2).
-occurs ( object (robot ,2) , move (0 ,1) ,3).
-occurs ( object (robot ,1) , pickup ,4).
-occurs ( object (robot ,2) , deliver (1 ,3 ,4) ,4).
-occurs ( object (robot ,1) , move ( -1 ,0) ,5).
-occurs ( object (robot ,2) , move (0 , -1) ,5).
-occurs ( object (robot ,1) , deliver (1 ,1 ,1) ,6).
-occurs ( object (robot ,2) , putdown ,6).
-occurs ( object (robot ,1) , putdown ,7).
-occurs ( object (robot ,2) , move (1 ,0) ,7).
-occurs ( object (robot ,1) , move (1 ,0) ,8).
-occurs ( object (robot ,2) , move (1 ,0) ,8).
-occurs ( object (robot ,1) , move (0 , -1) ,9).
-occurs ( object (robot ,2) , pickup ,9).
-occurs ( object (robot ,1) , pickup ,10).
-occurs ( object (robot ,2) , move (0 , -1) ,10).
-occurs ( object (robot ,1) , move (1 ,0) ,11).
-occurs ( object (robot ,2) , deliver (3 ,4 ,1) ,11).
-occurs ( object (robot ,1) , move (0 , -1) ,12).
-occurs ( object (robot ,2) , move (1 ,0) ,12).
-occurs ( object (robot ,1) , deliver (2 ,2 ,1) ,13).
-%:-occurs(object(robot,1),move(X,Y),3),move(X,Y).
 
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -197,9 +172,9 @@ action(pickup).action(putdown).
 %%%%%%%%%%%
 %% Goals %%
 %%%%%%%%%%%
-%:- not order(O,I,E,m),init ( object (order ,O) , value (line , pair (I ,U))), E=0 .
+:- not order(O,I,E,m),init ( object (order ,O) , value (line , pair (I ,U))), E=0 .
 
 #show occurs/3.
-#show at/4.
+%#show at/4.
 #show order/4.
 %#show carry/3.
