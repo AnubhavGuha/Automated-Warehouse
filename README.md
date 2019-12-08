@@ -1,4 +1,4 @@
-# cse579_autowarehouse
+# Automated Warehouse Scenario
 __[Final Project Report Link](https://drive.google.com/file/d/1ePJYVsW2RGq6_JAHh-t9gOMyVIYSZ0KO/view?usp=sharing)__
 > Team Members: Yi-Chuan Lin, Anubhab Guha, Daniel Pilgrim-Minaya, Kanisk Bashyam
  
