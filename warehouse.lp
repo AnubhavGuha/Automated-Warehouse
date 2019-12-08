@@ -100,12 +100,10 @@ carry(R,nada,T):- occurs(object(robot,R),putdown,T),T = 1..m.
 
 % No deliver action for zero unit item
 :- occurs(object(robot,R),deliver(O,I,A),T), object(robot,R),A=0,T = 1..m.
-:- occurs(object(robot,R),deliver(O,I,A),T), object(robot,R),order(O,I,E,T-1), A>E,T = 1..m.
 
 % Subtracts A (delivery amt) from U (shelf amt), N = shelf num
 on(I,shelf,N,U-A,T) :- occurs(object(robot,R),deliver(O,I,A),T), on(I,shelf,N,U,T-1),T = 1..m.
 order(O,I,E-A,T):- occurs(object(robot,R),deliver(O,I,A),T), order(O,I,E,T-1),T = 1..m.
-:- order(O,I,E,T), E<0,T = 1..m.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
