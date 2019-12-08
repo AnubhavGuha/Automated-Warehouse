@@ -1,0 +1,12 @@
+occurs(object(robot,1),action(move,(-1,0)),1). 
+occurs(object(robot,2),action(move,(1,0)),1). 
+occurs(object(robot,1),action(move,(0,-1)),2). 
+occurs(object(robot,2),action(move,(-1,0)),2). 
+occurs(object(robot,1),action(move,(0,-1)),4). 
+occurs(object(robot,2),action(move,(1,0)),5). 
+occurs(object(robot,1),action(move,(1,0)),6). 
+occurs(object(robot,2),action(move,(0,-1)),6). 
+occurs(object(robot,1),action(pickup,()),3). 
+occurs(object(robot,2),action(pickup,()),4). 
+occurs(object(robot,1),action(deliver,(2,4,1)),5). 
+occurs(object(robot,2),action(deliver,(1,2,1)),7).
